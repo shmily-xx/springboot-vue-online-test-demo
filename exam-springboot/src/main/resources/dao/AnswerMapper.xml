@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.AnswerMapper">
+
+    <select id="findAll" resultType="com.exam.vo.AnswerVO">
+        select question, subject, score, section,level, "选择题" as type from multi_question
+        union select  question, subject, score, section,level, "判断题" as type  from judge_question
+        union select  question, subject, score, section,level, "填空题" as type from fill_question
+    </select>
+</mapper>

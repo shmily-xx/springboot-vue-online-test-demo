@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.ExamManageMapper">
+    <select id="findAll" resultType="com.exam.entity.ExamManage">
+        select *
+        from exam_manage
+    </select>
+
+    <select id="findById" resultType="com.exam.entity.ExamManage">
+        select *
+        from exam_manage
+        where examCode = #{examCode}
+    </select>
+
+    <delete id="delete">
+        delete
+        from exam_manage
+        where examCode = #{examCode}
+    </delete>
+
+    <update id="update">
+        update exam_manage
+        set description = #{description},
+            source      = #{source},
+            paperId     = #{paperId},
+            examDate    = #{examDate},
+            totalTime   = #{totalTime},
+            grade       = #{grade},
+            term        = #{term},
+            major       = #{major},
+            institute   = #{institute},
+            totalScore  = #{totalScore},
+            type        = #{type},
+            tips        = #{tips}
+        where examCode = #{examCode}
+    </update>
+
+    <insert id="add" useGeneratedKeys='true' keyProperty="examCode">
+        insert into exam_manage(description, source, paperId, examDate, totalTime, grade, term, major, institute,
+                                totalScore, type, tips)
+        values (#{description}, #{source}, #{paperId}, #{examDate}, #{totalTime}, #{grade}, #{term}, #{major},
+                #{institute}, #{totalScore}, #{type}, #{tips})
+    </insert>
+
+    <select id="findOnlyPaperId" resultType="com.exam.entity.ExamManage">
+        select paperId from exam_manage order by paperId desc limit 1
+    </select>
+</mapper>

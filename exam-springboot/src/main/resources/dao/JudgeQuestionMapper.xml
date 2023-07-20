@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.JudgeQuestionMapper">
+    <select id="findByIdAndType" resultType="com.exam.entity.JudgeQuestion">
+        select *
+        from judge_question
+        where questionId in (select questionId from paper_manage where questionType = 3 and paperId = #{paperId})
+    </select>
+
+    <select id="findAll" resultType="com.exam.entity.JudgeQuestion">
+        select *
+        from judge_question
+    </select>
+
+    <select id="findOnlyQuestionId" resultType="com.exam.entity.JudgeQuestion">
+        select questionId
+        from judge_question
+        order by questionId desc limit 1
+    </select>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="questionId">
+        insert into judge_question(subject, question, answer, analysis, level, section)
+        values (#{subject}, #{question}, #{answer}, #{analysis}, #{level}, #{section})
+    </insert>
+
+    <select id="findBySubject" resultType="java.lang.Integer">
+        select questionId
+        from judge_question
+        where subject = #{subject}
+        order by rand() desc limit #{pageNo}
+    </select>
+</mapper>

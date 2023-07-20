@@ -1,0 +1,15 @@
+server:
+  port: 333
+  servlet:
+    context-path: /test
+
+spring:
+  profiles:
+    #dev
+    active: dev
+
+#logging:
+#  level:
+#    com:
+#      exam:
+#        mapper: 'debug'

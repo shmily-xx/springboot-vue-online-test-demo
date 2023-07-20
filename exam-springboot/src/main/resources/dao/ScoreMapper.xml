@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.ScoreMapper">
+    <insert id="add" useGeneratedKeys="true" keyProperty="scoreId">
+        insert into score(examCode, studentId, subject, ptScore, etScore, score, answerDate)
+        values (#{examCode}, #{studentId}, #{subject}, #{ptScore}, #{etScore}, #{score}, #{answerDate})
+    </insert>
+
+    <select id="findAll" resultType="com.exam.entity.Score">
+        select scoreId,
+               examCode,
+               studentId,
+               subject,
+               ptScore,
+               etScore,
+               score,
+               answerDate
+        from score
+        order by scoreId desc
+    </select>
+
+    <select id="findById" resultType="com.exam.entity.Score">
+        select scoreId,
+               examCode,
+               studentId,
+               subject,
+               ptScore,
+               etScore,
+               score,
+               answerDate
+        from score
+        where studentId = #{studentId}
+        order by scoreId desc
+    </select>
+
+    <select id="findByIdNoPages" resultType="com.exam.entity.Score">
+        select scoreId,
+               examCode,
+               studentId,
+               subject,
+               ptScore,
+               etScore,
+               score,
+               answerDate
+        from score
+        where studentId = #{studentId}
+    </select>
+
+    <select id="findByExamCode" resultType="com.exam.entity.Score">
+        select max(etScore) as etScore
+        from score
+        where examCode = #{examCode}
+        group by studentId
+    </select>
+</mapper>

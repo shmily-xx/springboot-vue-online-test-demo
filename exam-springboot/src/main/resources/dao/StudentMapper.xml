@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.StudentMapper">
+    <select id="findAll" resultType="com.exam.entity.Student">
+        select *
+        from student
+    </select>
+
+    <select id="findById" resultType="com.exam.entity.Student">
+        select *
+        from student
+        where studentId = #{studentId}
+    </select>
+
+    <delete id="deleteById">
+        delete
+        from student
+        where studentId = #{studentId}
+    </delete>
+
+    <update id="update">
+        update student
+        set studentName = #{studentName},
+            grade       = #{grade},
+            major       = #{major},
+            clazz       = #{clazz},
+            institute   = #{institute},
+            tel         = #{tel},
+            email       = #{email},
+            pwd         = #{pwd},
+            cardId      = #{cardId},
+            sex         = #{sex},
+            role        = #{role}
+        where studentId = #{studentId}
+    </update>
+
+    <update id="updatePwd">
+        update student
+        set pwd = #{pwd}
+        where studentId = #{studentId}
+    </update>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="studentId">
+        insert into student(studentName, grade, major, clazz, institute, tel, email, pwd, cardId, sex, role)
+        values (#{studentName}, #{grade}, #{major}, #{clazz}, #{institute}, #{tel}, #{email}, #{pwd}, #{cardId}, #{sex},
+                #{role})
+    </insert>
+</mapper>
