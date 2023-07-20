@@ -4,8 +4,7 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "standard-with-typescript",
         "plugin:vue/vue3-essential"
     ],
     "overrides": [
@@ -23,11 +22,9 @@ module.exports = {
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "parser": "@typescript-eslint/parser",
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint",
         "vue"
     ],
     "rules": {
