@@ -1,5 +1,5 @@
                                   <!--考生答题界面-->
-  <template>
+    <template>
     <div id="answer">
     <!--顶部信息栏-->
      <div class="top">
