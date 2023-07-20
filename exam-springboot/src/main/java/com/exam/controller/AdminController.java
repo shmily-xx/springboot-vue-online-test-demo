@@ -18,13 +18,11 @@ public class AdminController {
 
     @GetMapping("/admins")
     public ApiResult findAll(){
-        System.out.println("查询全部");
         return ApiResultHandler.success(adminService.findAll());
     }
 
     @GetMapping("/admin/{adminId}")
     public ApiResult findById(@PathVariable("adminId") Integer adminId){
-        System.out.println("根据ID查找");
         return ApiResultHandler.success(adminService.findById(adminId));
     }
 

@@ -8,7 +8,7 @@ public class ApiResultHandler {
         ApiResult apiResult = new ApiResult();
         apiResult.setData(object);
         apiResult.setCode(200);
-        apiResult.setMessage("请求成功");
+        apiResult.setMessage("ok");
         return apiResult;
     }
 

@@ -23,19 +23,19 @@ public class LoginController {
         String password = login.getPassword();
         Admin adminRes = loginService.adminLogin(username, password);
         if (adminRes != null) {
-            return ApiResultHandler.buildApiResult(200, "请求成功", adminRes);
+            return ApiResultHandler.buildApiResult(200, "ok", adminRes);
         }
 
         Teacher teacherRes = loginService.teacherLogin(username,password);
         if (teacherRes != null) {
-            return ApiResultHandler.buildApiResult(200, "请求成功", teacherRes);
+            return ApiResultHandler.buildApiResult(200, "ok", teacherRes);
         }
 
         Student studentRes = loginService.studentLogin(username,password);
         if (studentRes != null) {
-            return ApiResultHandler.buildApiResult(200, "请求成功", studentRes);
+            return ApiResultHandler.buildApiResult(200, "ok", studentRes);
         }
 
-        return ApiResultHandler.buildApiResult(400, "请求失败", null);
+        return ApiResultHandler.buildApiResult(400, "error", null);
     }
 }
