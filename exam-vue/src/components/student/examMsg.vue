@@ -39,7 +39,7 @@
           </template>
           <el-collapse class="inner">
             <el-collapse-item>
-              <template slot="title" name="1">
+              <template slot="title">
                 <div class="titlei">选择题 (共{{ topicCount[0] }}题 共计{{ score[0] }}分)</div>
               </template>
               <div class="contenti">
@@ -49,7 +49,7 @@
               </div>
             </el-collapse-item>
             <el-collapse-item>
-              <template slot="title" name="2">
+              <template slot="title">
                 <div class="titlei">填空题 (共{{ topicCount[1] }}题 共计{{ score[1] }}分)</div>
               </template>
               <div class="contenti">
@@ -59,7 +59,7 @@
               </div>
             </el-collapse-item>
             <el-collapse-item>
-              <template slot="title" name="3">
+              <template slot="title">
                 <div class="titlei">判断题 (共{{ topicCount[2] }}题 共计{{ score[2] }}分)</div>
               </template>
               <div class="contenti">
