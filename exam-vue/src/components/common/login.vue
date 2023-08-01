@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import { getCurrentInstance } from 'vue';
 import { mapState } from 'vuex'
+import { timestamp, standardTime, getFormatDate } from '@/common/common.js'
 export default {
   name: "login",
   data() {
@@ -106,12 +106,15 @@ export default {
     },
     clickTag(key) {
       this.role = key
+    },
+    getFormatDate() {
+      return getFormatDate()
     }
   },
   computed: mapState(["userInfo"]),
   mounted() {
     var nowYear = new Date();
-    this.fullYear = nowYear.getFullYear();
+    this.fullYear = this.getFormatDate().getFullYear
 
     // console.log(this.fullYear)
   }
