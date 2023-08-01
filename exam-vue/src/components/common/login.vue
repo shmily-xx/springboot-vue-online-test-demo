@@ -34,7 +34,8 @@
     </el-row>
     <el-row class="footer">
       <el-col>
-        <p class="msg2">版权所有 ©2019 <!--重庆文理学院计科2班余晓江--> 保留所有权利  <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备19001371号</a></p>
+        <p class="msg2">版权所有 ©{{ fullYear }} 威爹 保留所有权利 <a href="http://beian.miit.gov.cn/"
+            target="_blank">渝ICP备19001371号</a></p>
       </el-col>
     </el-row>
     <section class="remind">
@@ -46,7 +47,8 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { getCurrentInstance } from 'vue';
+import { mapState } from 'vuex'
 export default {
   name: "login",
   data() {
@@ -56,7 +58,8 @@ export default {
       formLabelAlign: {
         username: '20154084',
         password: '123456'
-      }
+      },
+      fullYear: null,
     }
   },
   methods: {
@@ -69,30 +72,30 @@ export default {
         data: {
           ...this.formLabelAlign
         }
-      }).then(res=>{
+      }).then(res => {
         let resData = res.data.data
-        if(resData != null) {
-          switch(resData.role) {
+        if (resData != null) {
+          switch (resData.role) {
             case "0":  //管理员
               this.$cookies.set("cname", resData.adminName)
               this.$cookies.set("cid", resData.adminId)
               this.$cookies.set("role", 0)
-              this.$router.push({path: '/index' }) //跳转到首页
+              this.$router.push({ path: '/index' }) //跳转到首页
               break
             case "1": //教师
               this.$cookies.set("cname", resData.teacherName)
               this.$cookies.set("cid", resData.teacherId)
               this.$cookies.set("role", 1)
-              this.$router.push({path: '/index' }) //跳转到教师用户
+              this.$router.push({ path: '/index' }) //跳转到教师用户
               break
             case "2": //学生
               this.$cookies.set("cname", resData.studentName)
               this.$cookies.set("cid", resData.studentId)
-              this.$router.push({path: '/student'})
+              this.$router.push({ path: '/student' })
               break
           }
         }
-        if(resData == null) { //错误提示
+        if (resData == null) { //错误提示
           this.$message({
             showClose: true,
             type: 'error',
@@ -107,7 +110,10 @@ export default {
   },
   computed: mapState(["userInfo"]),
   mounted() {
+    var nowYear = new Date();
+    this.fullYear = nowYear.getFullYear();
 
+    // console.log(this.fullYear)
   }
 }
 </script>
@@ -126,21 +132,26 @@ export default {
   border-left: 4px solid #409eff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
+
 .container {
   margin-bottom: 32px;
 }
+
 .container .el-radio-group {
   margin: 30px 0px;
 }
+
 a:link {
-  color:#ff962a;
-  text-decoration:none;
+  color: #ff962a;
+  text-decoration: none;
 }
+
 #login {
   font-size: 14px;
   color: #000;
   background-color: #fff;
 }
+
 #login .bg {
   position: fixed;
   top: 0;
@@ -151,11 +162,13 @@ a:link {
   background: url('../../assets/img/loginbg.png')center top / cover no-repeat;
   background-color: #b6bccdd1 !important;
 }
+
 #login .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 #login .main-container .top {
   margin-top: 100px;
   font-size: 30px;
@@ -163,26 +176,33 @@ a:link {
   display: flex;
   justify-content: center;
 }
+
 #login .top .icon-kaoshi {
   font-size: 80px;
 }
+
 #login .top .title {
   margin-top: 20px;
 }
+
 #login .bottom {
-  display:flex;
+  display: flex;
   justify-content: center;
-  background-color:#fff;
+  background-color: #78dd5fd1;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 #login .bottom .title {
   text-align: center;
   font-size: 30px;
 }
+
 .bottom .container .title {
-  margin: 30px 0px;;
+  margin: 30px 0px;
+  ;
 }
+
 .bottom .submit .row-login {
   width: 100%;
   background-color: #04468b;
@@ -190,33 +210,40 @@ a:link {
   margin: 20px 0px 10px 0px;
   padding: 15px 20px;
 }
+
 .bottom .submit {
   display: flex;
   justify-content: center;
 }
+
 .footer {
   margin-top: 50px;
   text-align: center;
 }
+
 .footer .msg1 {
   font-size: 18px;
   color: #fff;
   margin-bottom: 15px;
 }
+
 .footer .msg2 {
   font-size: 14px;
   color: #e3e3e3;
   margin-top: 70px;
 }
+
 .bottom .options {
   margin-bottom: 40px;
   color: #ff962a;
   display: flex;
   justify-content: space-between;
 }
-.bottom .options > a {
+
+.bottom .options>a {
   color: #ff962a;
 }
+
 .bottom .options .register span:nth-child(1) {
   color: #8C8C8C;
 }
