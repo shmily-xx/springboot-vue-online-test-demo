@@ -7,9 +7,12 @@ spring:
   profiles:
     #dev
     active: dev
+  devtools:
+    add-properties: false
 
-#logging:
-#  level:
-#    com:
-#      exam:
-#        mapper: 'debug'
+logging:
+  level:
+    com:
+      exam:
+        mapper: 'debug'
+    web: debug
