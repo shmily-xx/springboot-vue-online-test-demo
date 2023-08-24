@@ -5,16 +5,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.ExamManage;
 import com.exam.mapper.ExamManageMapper;
 import com.exam.service.ExamManageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class ExamManageServiceImpl implements ExamManageService {
-    @Autowired
-    private ExamManageMapper examManageMapper;
 
+    private final ExamManageMapper examManageMapper;
+
+    public ExamManageServiceImpl(ExamManageMapper examManageMapper) {
+        this.examManageMapper = examManageMapper;
+    }
 
     @Override
     public List<ExamManage> findAll() {

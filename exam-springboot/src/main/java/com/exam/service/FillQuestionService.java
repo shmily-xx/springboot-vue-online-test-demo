@@ -6,6 +6,9 @@ import com.exam.entity.FillQuestion;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface FillQuestionService {
 
     List<FillQuestion> findByIdAndType(Integer paperId);

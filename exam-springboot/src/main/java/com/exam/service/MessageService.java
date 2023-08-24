@@ -4,8 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Message;
 
+/**
+ * @author weidie
+ */
 public interface MessageService {
-    IPage<Message> findAll(Page page);
+    IPage<Message> findAll(Page<Message> page);
 
     Message findById(Integer id);
 

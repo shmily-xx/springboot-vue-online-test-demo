@@ -6,6 +6,9 @@ import com.exam.entity.PaperManage;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface PaperService {
 
     List<PaperManage> findAll();

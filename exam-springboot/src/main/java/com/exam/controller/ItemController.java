@@ -2,6 +2,9 @@ package com.exam.controller;
 
 import com.exam.entity.ApiResult;
 import com.exam.entity.PaperManage;
+import com.exam.service.FillQuestionService;
+import com.exam.service.JudgeQuestionService;
+import com.exam.service.MultiQuestionService;
 import com.exam.service.PaperService;
 import com.exam.serviceimpl.FillQuestionServiceImpl;
 import com.exam.serviceimpl.JudgeQuestionServiceImpl;
@@ -15,23 +18,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @RestController
 public class ItemController {
 
-    @Autowired
-    MultiQuestionServiceImpl multiQuestionService;
+    private final MultiQuestionService multiQuestionService;
 
-    @Autowired
-    FillQuestionServiceImpl fillQuestionService;
+    private final FillQuestionService fillQuestionService;
 
-    @Autowired
-    JudgeQuestionServiceImpl judgeQuestionService;
+    private final JudgeQuestionService judgeQuestionService;
 
-    @Autowired
-    PaperService paperService;
+    private final PaperService paperService;
+
+    public ItemController(MultiQuestionService multiQuestionService, FillQuestionService fillQuestionService, JudgeQuestionService judgeQuestionService, PaperService paperService) {
+        this.multiQuestionService = multiQuestionService;
+        this.fillQuestionService = fillQuestionService;
+        this.judgeQuestionService = judgeQuestionService;
+        this.paperService = paperService;
+    }
 
     @PostMapping("/item")
-    public ApiResult ItemController(@RequestBody Item item) {
+    public ApiResult<Integer> item(@RequestBody Item item) {
         // 选择题
         Integer changeNumber = item.getChangeNumber();
         // 填空题
@@ -68,7 +77,7 @@ public class ItemController {
         }
         // 判断题
         List<Integer> judges = judgeQuestionService.findBySubject(item.getSubject(), judgeNumber);
-        if (fills == null) {
+        if (judges == null) {
             return ApiResultHandler.buildApiResult(400, "判断题数据库获取失败", null);
         }
         for (Integer judge : judges) {

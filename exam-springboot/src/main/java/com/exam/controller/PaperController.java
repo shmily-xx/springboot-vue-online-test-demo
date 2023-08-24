@@ -1,6 +1,10 @@
 package com.exam.controller;
 
 import com.exam.entity.*;
+import com.exam.service.FillQuestionService;
+import com.exam.service.JudgeQuestionService;
+import com.exam.service.MultiQuestionService;
+import com.exam.service.PaperService;
 import com.exam.serviceimpl.FillQuestionServiceImpl;
 import com.exam.serviceimpl.JudgeQuestionServiceImpl;
 import com.exam.serviceimpl.MultiQuestionServiceImpl;
@@ -13,25 +17,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author weidie
+ */
 @RestController
 public class PaperController {
 
-    @Autowired
-    private PaperServiceImpl paperService;
+    private final PaperService paperService;
 
-    @Autowired
-    private JudgeQuestionServiceImpl judgeQuestionService;
+    private final JudgeQuestionService judgeQuestionService;
 
-    @Autowired
-    private MultiQuestionServiceImpl multiQuestionService;
+    private final MultiQuestionService multiQuestionService;
 
-    @Autowired
-    private FillQuestionServiceImpl fillQuestionService;
+    private final FillQuestionService fillQuestionService;
+
+    public PaperController(PaperService paperService, JudgeQuestionService judgeQuestionService, MultiQuestionService multiQuestionService, FillQuestionService fillQuestionService) {
+        this.paperService = paperService;
+        this.judgeQuestionService = judgeQuestionService;
+        this.multiQuestionService = multiQuestionService;
+        this.fillQuestionService = fillQuestionService;
+    }
 
     @GetMapping("/papers")
-    public ApiResult<PaperManage> findAll() {
-        ApiResult res = ApiResultHandler.buildApiResult(200, "ok", paperService.findAll());
-        return res;
+    public ApiResult<List<PaperManage>> findAll() {
+        return ApiResultHandler.buildApiResult(200, "ok", paperService.findAll());
     }
 
     @GetMapping("/paper/{paperId}")
@@ -47,7 +56,7 @@ public class PaperController {
     }
 
     @PostMapping("/paperManage")
-    public ApiResult add(@RequestBody PaperManage paperManage) {
+    public ApiResult<Integer> add(@RequestBody PaperManage paperManage) {
         int res = paperService.add(paperManage);
         if (res != 0) {
             return ApiResultHandler.buildApiResult(200, "添加成功", res);

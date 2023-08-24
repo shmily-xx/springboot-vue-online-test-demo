@@ -5,16 +5,19 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Student;
 import com.exam.mapper.StudentMapper;
 import com.exam.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * @author weidie
+ */
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired
-    private StudentMapper studentMapper;
 
+    private final StudentMapper studentMapper;
+
+    public StudentServiceImpl(StudentMapper studentMapper) {
+        this.studentMapper = studentMapper;
+    }
 
     @Override
     public IPage<Student> findAll(Page<Student> page) {
@@ -37,8 +40,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int updatePwd(Student student) {
-        return studentMapper.updatePwd(student);
+    public void updatePwd(Student student) {
+        studentMapper.updatePwd(student);
     }
 
     @Override

@@ -3,16 +3,21 @@ package com.exam.serviceimpl;
 import com.exam.entity.Replay;
 import com.exam.mapper.ReplayMapper;
 import com.exam.service.ReplayService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class ReplayServiceImpl implements ReplayService {
 
-    @Autowired
-    private ReplayMapper replayMapper;
+    private final ReplayMapper replayMapper;
+
+    public ReplayServiceImpl(ReplayMapper replayMapper) {
+        this.replayMapper = replayMapper;
+    }
 
     @Override
     public List<Replay> findAll() {

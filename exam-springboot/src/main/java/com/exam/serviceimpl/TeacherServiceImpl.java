@@ -5,15 +5,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Teacher;
 import com.exam.mapper.TeacherMapper;
 import com.exam.service.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class TeacherServiceImpl implements TeacherService {
-    @Autowired
-    private TeacherMapper teacherMapper;
+
+    private final TeacherMapper teacherMapper;
+
+    public TeacherServiceImpl(TeacherMapper teacherMapper) {
+        this.teacherMapper = teacherMapper;
+    }
 
     @Override
     public IPage<Teacher> findAll(Page<Teacher> page) {

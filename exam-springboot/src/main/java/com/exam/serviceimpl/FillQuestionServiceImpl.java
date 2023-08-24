@@ -5,16 +5,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.FillQuestion;
 import com.exam.mapper.FillQuestionMapper;
 import com.exam.service.FillQuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class FillQuestionServiceImpl implements FillQuestionService {
 
-    @Autowired
-    private FillQuestionMapper fillQuestionMapper;
+    private final FillQuestionMapper fillQuestionMapper;
+
+    public FillQuestionServiceImpl(FillQuestionMapper fillQuestionMapper) {
+        this.fillQuestionMapper = fillQuestionMapper;
+    }
 
     @Override
     public List<FillQuestion> findByIdAndType(Integer paperId) {

@@ -6,12 +6,15 @@ import com.exam.entity.Score;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface ScoreService {
     int add(Score score);
 
     List<Score> findAll();
 
-    IPage<Score> findById(Page page, Integer studentId);
+    IPage<Score> findById(Page<Score> page, Integer studentId);
 
     List<Score> findById(Integer studentId);
 

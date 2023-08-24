@@ -4,6 +4,9 @@ import com.exam.entity.Replay;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface ReplayService {
 
     List<Replay> findAll();

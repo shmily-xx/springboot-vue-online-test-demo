@@ -3,16 +3,21 @@ package com.exam.serviceimpl;
 import com.exam.entity.Admin;
 import com.exam.mapper.AdminMapper;
 import com.exam.service.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
 
-    @Autowired
-    private AdminMapper adminMapper;
+    private final AdminMapper adminMapper;
+
+    public AdminServiceImpl(AdminMapper adminMapper) {
+        this.adminMapper = adminMapper;
+    }
 
     @Override
     public List<Admin> findAll() {

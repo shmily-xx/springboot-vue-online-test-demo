@@ -5,16 +5,21 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.JudgeQuestion;
 import com.exam.mapper.JudgeQuestionMapper;
 import com.exam.service.JudgeQuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Service
 public class JudgeQuestionServiceImpl implements JudgeQuestionService {
 
-    @Autowired
-    private JudgeQuestionMapper judgeQuestionMapper;
+    private final JudgeQuestionMapper judgeQuestionMapper;
+
+    public JudgeQuestionServiceImpl(JudgeQuestionMapper judgeQuestionMapper) {
+        this.judgeQuestionMapper = judgeQuestionMapper;
+    }
 
     @Override
     public List<JudgeQuestion> findByIdAndType(Integer paperId) {

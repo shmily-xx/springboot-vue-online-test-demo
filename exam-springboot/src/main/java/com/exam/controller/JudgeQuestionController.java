@@ -2,6 +2,7 @@ package com.exam.controller;
 
 import com.exam.entity.ApiResult;
 import com.exam.entity.JudgeQuestion;
+import com.exam.service.JudgeQuestionService;
 import com.exam.serviceimpl.JudgeQuestionServiceImpl;
 import com.exam.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author weidie
+ */
 @RestController
 public class JudgeQuestionController {
 
-    @Autowired
-    private JudgeQuestionServiceImpl judgeQuestionService;
+    private final JudgeQuestionService judgeQuestionService;
+
+    public JudgeQuestionController(JudgeQuestionService judgeQuestionService) {
+        this.judgeQuestionService = judgeQuestionService;
+    }
 
     @PostMapping("/judgeQuestion")
-    public ApiResult add(@RequestBody JudgeQuestion judgeQuestion) {
+    public ApiResult<Integer> add(@RequestBody JudgeQuestion judgeQuestion) {
         int res = judgeQuestionService.add(judgeQuestion);
         if (res != 0) {
             return ApiResultHandler.buildApiResult(200, "添加成功", res);
@@ -26,7 +33,7 @@ public class JudgeQuestionController {
     }
 
     @GetMapping("/judgeQuestionId")
-    public ApiResult findOnlyQuestionId() {
+    public ApiResult<JudgeQuestion> findOnlyQuestionId() {
         JudgeQuestion res = judgeQuestionService.findOnlyQuestionId();
         return ApiResultHandler.buildApiResult(200, "查询成功", res);
     }

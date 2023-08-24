@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Mapper
 public interface LoginMapper {
 

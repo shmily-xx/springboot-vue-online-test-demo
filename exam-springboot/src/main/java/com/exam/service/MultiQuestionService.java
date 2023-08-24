@@ -6,9 +6,12 @@ import com.exam.entity.MultiQuestion;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface MultiQuestionService {
 
-    List<MultiQuestion> findByIdAndType(Integer PaperId);
+    List<MultiQuestion> findByIdAndType(Integer paperId);
 
     IPage<MultiQuestion> findAll(Page<MultiQuestion> page);
 

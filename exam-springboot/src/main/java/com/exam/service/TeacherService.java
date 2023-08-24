@@ -6,17 +6,20 @@ import com.exam.entity.Teacher;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 public interface TeacherService {
 
     IPage<Teacher> findAll(Page<Teacher> page);
 
-    public List<Teacher> findAll();
+    List<Teacher> findAll();
 
-    public Teacher findById(Integer teacherId);
+    Teacher findById(Integer teacherId);
 
-    public int deleteById(Integer teacherId);
+    int deleteById(Integer teacherId);
 
-    public int update(Teacher teacher);
+    int update(Teacher teacher);
 
-    public int add(Teacher teacher);
+    int add(Teacher teacher);
 }

@@ -5,16 +5,19 @@ import com.exam.entity.Student;
 import com.exam.entity.Teacher;
 import com.exam.mapper.LoginMapper;
 import com.exam.service.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * @author weidie
+ */
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    private LoginMapper loginMapper;
+    private final LoginMapper loginMapper;
+
+    public LoginServiceImpl(LoginMapper loginMapper) {
+        this.loginMapper = loginMapper;
+    }
 
     @Override
     public Admin adminLogin(Integer username, String password) {

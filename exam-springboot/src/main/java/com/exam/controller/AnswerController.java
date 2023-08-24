@@ -3,6 +3,8 @@ package com.exam.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.ApiResult;
+import com.exam.service.AdminService;
+import com.exam.service.AnswerService;
 import com.exam.serviceimpl.AnswerServiceImpl;
 import com.exam.util.ApiResultHandler;
 import com.exam.vo.AnswerVO;
@@ -12,17 +14,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
+/**
+ * @author weidie
+ */
 @RestController
 public class AnswerController {
 
-    @Autowired
-    private AnswerServiceImpl answerService;
+    private final AnswerService answerService;
+    public AnswerController(AnswerService adminService) {
+        this.answerService = adminService;
+    }
 
     @GetMapping("/answers/{page}/{size}")
-    public ApiResult findAllQuestion(@PathVariable("page") Integer page, @PathVariable("size") Integer size){
-       Page<AnswerVO> answerVOPage = new Page<>(page,size);
-       IPage<AnswerVO> answerVOIPage = answerService.findAll(answerVOPage);
-       return ApiResultHandler.buildApiResult(200,"ok",answerVOIPage);
+    public ApiResult<IPage<AnswerVO>> findAllQuestion(@PathVariable("page") Integer page, @PathVariable("size") Integer size){
+       Page<AnswerVO> answervoPage = new Page<>(page,size);
+       IPage<AnswerVO> answervoIpage = answerService.findAll(answervoPage);
+       return ApiResultHandler.buildApiResult(200,"ok",answervoIpage);
 
     }
 }

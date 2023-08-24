@@ -2,6 +2,9 @@ package com.exam.entity;
 
 import lombok.Data;
 
+/**
+ * @author weidie
+ */
 @Data
 public class ApiResult<T> {
     /**
