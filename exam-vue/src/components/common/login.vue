@@ -20,13 +20,13 @@
               <div class="submit">
                 <el-button type="primary" class="row-login" @click="login()">登录</el-button>
               </div>
-              <!-- <div class="options">
-                <p class="find"><a href="javascript:;">找回密码</a></p>
+              <div class="options">
+                <!-- <p class="find"><a href="javascript:;">找回密码</a></p> -->
                 <div class="register">
                   <span>没有账号?</span>
-                  <span><a href="javascript:;">去注册</a></span>
+                  <span><a @click="register()">去注册</a></span>
                 </div>
-              </div> -->
+              </div>
             </el-form>
           </div>
         </div>
@@ -63,6 +63,11 @@ export default {
     }
   },
   methods: {
+    register() {
+      this.$router.push({
+        path: '/register'
+      })
+    },
     //用户登录请求后台处理
     login() {
       console.log("登录操作执行-------");

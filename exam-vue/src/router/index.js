@@ -10,6 +10,11 @@ export default new Router({
       component: () => import('@/components/common/login')
     },
     {
+      path: '/register',
+      name: 'register', //注册
+      component: () => import('@/components/common/register')
+    },
+    {
       path: '/index', //教师主页
       component: () => import('@/components/admin/index'),
       children: [
@@ -18,7 +23,7 @@ export default new Router({
           component: () => import('@/components/common/hello')
         },
         {
-          path:'/grade', //学生成绩
+          path: '/grade', //学生成绩
           component: () => import('@/components/charts/grade')
         },
         {
@@ -47,7 +52,7 @@ export default new Router({
         },
         {
           path: '/answerDescription', //题库管理功能介绍
-          component: ()=> import('@/components/teacher/answerDescription')
+          component: () => import('@/components/teacher/answerDescription')
         },
         {
           path: '/selectAnswer', //查询所有题库
@@ -75,7 +80,7 @@ export default new Router({
         },
         {
           path: '/addTeacher',
-          component: () => import ('@/components/admin/addTeacher')
+          component: () => import('@/components/admin/addTeacher')
         }
       ]
     },
@@ -83,15 +88,15 @@ export default new Router({
       path: '/student',
       component: () => import('@/components/student/index'),
       children: [
-        {path:"/",component: ()=> import('@/components/student/myExam')},
-        {path:'/startExam', component: () => import('@/components/student/startExam')},
-        {path: '/manager', component: () => import('@/components/student/manager')},
-        {path: '/examMsg', component: () => import('@/components/student/examMsg')},
-        {path: '/message', component: () => import('@/components/student/message')},
-        {path: '/studentScore', component: () => import("@/components/student/answerScore")},
-        {path: '/scoreTable', component: () => import("@/components/student/scoreTable")}
+        { path: "/", component: () => import('@/components/student/myExam') },
+        { path: '/startExam', component: () => import('@/components/student/startExam') },
+        { path: '/manager', component: () => import('@/components/student/manager') },
+        { path: '/examMsg', component: () => import('@/components/student/examMsg') },
+        { path: '/message', component: () => import('@/components/student/message') },
+        { path: '/studentScore', component: () => import("@/components/student/answerScore") },
+        { path: '/scoreTable', component: () => import("@/components/student/scoreTable") }
       ]
     },
-    {path: '/answer',component: () => import('@/components/student/answer')}
+    { path: '/answer', component: () => import('@/components/student/answer') }
   ]
 })
