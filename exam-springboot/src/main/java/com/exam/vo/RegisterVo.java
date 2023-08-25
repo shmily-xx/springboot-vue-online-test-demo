@@ -1,4 +1,4 @@
-package com.exam.entity;
+package com.exam.vo;
 
 import lombok.Data;
 
@@ -8,28 +8,35 @@ import javax.validation.constraints.NotNull;
  * @author weidie
  */
 @Data
-public class Student {
+public class RegisterVo {
 
-    private Integer studentId;
-
-    /**
-     * 名字
-     */
-    @NotNull
     private String studentName;
 
-    @NotNull
+    /**
+     * 年级
+     */
     private String grade;
 
-    @NotNull
+    /**
+     * 专业
+     */
     private String major;
 
-    @NotNull
+    /**
+     * 班级
+     */
+
     private String clazz;
 
+    /**
+     * 学院
+     */
     @NotNull
     private String institute;
 
+    /**
+     * 电话
+     */
     @NotNull
     private String tel;
 
@@ -39,6 +46,9 @@ public class Student {
     @NotNull
     private String pwd;
 
+    /**
+     * 身份证
+     */
     @NotNull
     private String cardId;
 
@@ -47,4 +57,15 @@ public class Student {
 
     @NotNull
     private String role;
+
+    private String teacherName;
+
+    @NotNull
+    private String userName;
+
+    /**
+     * 职称
+     */
+    private String type;
+
 }

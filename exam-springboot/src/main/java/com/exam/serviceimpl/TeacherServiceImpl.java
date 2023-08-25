@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Teacher;
 import com.exam.mapper.TeacherMapper;
 import com.exam.service.TeacherService;
+import com.exam.vo.RegisterVo;
+import com.fasterxml.jackson.databind.util.BeanUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,4 +53,5 @@ public class TeacherServiceImpl implements TeacherService {
     public int add(Teacher teacher) {
         return teacherMapper.add(teacher);
     }
+
 }

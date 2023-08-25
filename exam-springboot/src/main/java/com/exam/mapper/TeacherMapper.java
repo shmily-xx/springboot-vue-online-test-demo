@@ -1,5 +1,6 @@
 package com.exam.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.Teacher;
@@ -7,11 +8,14 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+/**
+ * @author weidie
+ */
 @Mapper
-public interface TeacherMapper {
+public interface TeacherMapper extends BaseMapper<Teacher> {
 
 //    @Select("select * from teacher")
-    IPage<Teacher>  findAll(Page page);
+    IPage<Teacher>  findAll(Page<Teacher> page);
 
 //    @Select("select * from teacher")
     public List<Teacher> findAllNoPages();
