@@ -16,7 +16,7 @@ public class RRException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private String msg;
-    private int code = 500;
+    private int code = -1;
     private Object exception = null;
     private Object object = null;
 
@@ -39,22 +39,6 @@ public class RRException extends RuntimeException {
     public RRException(String msg, int code, Throwable e) {
         super(msg, e);
         this.msg = msg;
-        this.code = code;
-    }
-
-    public void setException(Object exception) {
-        this.exception = exception;
-    }
-
-    public void setObject(Object object) {
-        this.object = object;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public void setCode(int code) {
         this.code = code;
     }
 }

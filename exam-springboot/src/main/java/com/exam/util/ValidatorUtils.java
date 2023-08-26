@@ -31,7 +31,7 @@ public class ValidatorUtils {
         Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object, groups);
         if (!constraintViolations.isEmpty()) {
         	ConstraintViolation<Object> constraint = constraintViolations.iterator().next();
-            throw new RRException(constraint.getMessage());
+            throw new RRException(constraint.getPropertyPath()+constraint.getMessage());
         }
     }
 }
