@@ -9,7 +9,7 @@ import com.exam.serviceimpl.FillQuestionServiceImpl;
 import com.exam.serviceimpl.JudgeQuestionServiceImpl;
 import com.exam.serviceimpl.MultiQuestionServiceImpl;
 import com.exam.serviceimpl.PaperServiceImpl;
-import com.exam.util.ApiResultHandler;
+import com.exam.util.Res;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +39,8 @@ public class PaperController {
     }
 
     @GetMapping("/papers")
-    public ApiResult<List<PaperManage>> findAll() {
-        return ApiResultHandler.buildApiResult(200, "ok", paperService.findAll());
+    public Res<List<PaperManage>> findAll() {
+        return Res.buildApiResult(200, "ok", paperService.findAll());
     }
 
     @GetMapping("/paper/{paperId}")
@@ -56,11 +56,11 @@ public class PaperController {
     }
 
     @PostMapping("/paperManage")
-    public ApiResult<Integer> add(@RequestBody PaperManage paperManage) {
+    public Res<Integer> add(@RequestBody PaperManage paperManage) {
         int res = paperService.add(paperManage);
         if (res != 0) {
-            return ApiResultHandler.buildApiResult(200, "添加成功", res);
+            return Res.buildApiResult(200, "添加成功", res);
         }
-        return ApiResultHandler.buildApiResult(400, "添加失败", res);
+        return Res.buildApiResult(400, "添加失败", res);
     }
 }

@@ -5,7 +5,8 @@ import com.exam.service.LoginService;
 import com.exam.service.StudentService;
 import com.exam.service.TeacherService;
 import com.exam.serviceimpl.LoginServiceImpl;
-import com.exam.util.ApiResultHandler;
+import com.exam.util.Res;
+import com.exam.util.R;
 import com.exam.util.ValidatorUtils;
 import com.exam.vo.RegisterVo;
 import org.springframework.beans.BeanUtils;
@@ -34,31 +35,31 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ApiResult<?> login(@RequestBody Login login) {
+    public Res<?> login(@RequestBody Login login) {
 
         Integer username = login.getUsername();
         String password = login.getPassword();
         Admin adminRes = loginService.adminLogin(username, password);
         if (adminRes != null) {
-            return ApiResultHandler.success(adminRes);
+            return Res.success(adminRes);
         }
 
         Teacher teacherRes = loginService.teacherLogin(username,password);
         if (teacherRes != null) {
-            return ApiResultHandler.success(teacherRes);
+            return Res.success(teacherRes);
         }
 
         Student studentRes = loginService.studentLogin(username,password);
         if (studentRes != null) {
-            return ApiResultHandler.success(studentRes);
+            return Res.success(studentRes);
         }
 
-        return ApiResultHandler.error();
+        return Res.error();
     }
 
 
     @RequestMapping("/register")
-    public ApiResult<?> register(@RequestBody RegisterVo registerVo) {
+    public R register(@RequestBody RegisterVo registerVo) {
         if (("1").equals(registerVo.getRole())) {
             Teacher teacher = new Teacher();
             BeanUtils.copyProperties(registerVo, teacher);
@@ -66,7 +67,7 @@ public class LoginController {
             // 老师
             ValidatorUtils.validateEntity(teacher);
             teacherService.add(teacher);
-            return ApiResultHandler.buildApiResult(0, "登陆账号：" + teacher.getTeacherId(), teacher);
+            return R.ok("登陆账号：" + teacher.getTeacherId());
         } else {
             Student student = new Student();
             BeanUtils.copyProperties(registerVo, student);
@@ -74,7 +75,7 @@ public class LoginController {
             // 学生
             ValidatorUtils.validateEntity(student);
             studentService.add(student);
-            return ApiResultHandler.buildApiResult(0, "登陆账号：" + student.getStudentId(), student);
+            return R.ok("登陆账号：" + student.getStudentId());
         }
     }
 }

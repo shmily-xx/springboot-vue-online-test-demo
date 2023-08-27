@@ -1,11 +1,8 @@
 package com.exam.controller;
 
-import com.exam.entity.ApiResult;
 import com.exam.entity.MultiQuestion;
 import com.exam.service.MultiQuestionService;
-import com.exam.serviceimpl.MultiQuestionServiceImpl;
-import com.exam.util.ApiResultHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.exam.util.Res;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,18 +21,18 @@ public class MultiQuestionController {
     }
 
     @GetMapping("/multiQuestionId")
-    public ApiResult<MultiQuestion> findOnlyQuestion() {
+    public Res<MultiQuestion> findOnlyQuestion() {
         MultiQuestion res = multiQuestionService.findOnlyQuestionId();
-        return ApiResultHandler.buildApiResult(200,"查询成功",res);
+        return Res.buildApiResult(200,"查询成功",res);
     }
 
     @PostMapping("/MultiQuestion")
-    public ApiResult<Integer> add(@RequestBody MultiQuestion multiQuestion) {
+    public Res<Integer> add(@RequestBody MultiQuestion multiQuestion) {
         int res = multiQuestionService.add(multiQuestion);
         if (res != 0) {
 
-            return ApiResultHandler.buildApiResult(200,"添加成功",res);
+            return Res.buildApiResult(200,"添加成功",res);
         }
-        return ApiResultHandler.buildApiResult(400,"添加失败",res);
+        return Res.buildApiResult(400,"添加失败",res);
     }
 }
