@@ -40,20 +40,20 @@ public class LoginController {
         String password = login.getPassword();
         Admin adminRes = loginService.adminLogin(username, password);
         if (adminRes != null) {
-            return ApiResultHandler.buildApiResult(200, "ok", adminRes);
+            return ApiResultHandler.success(adminRes);
         }
 
         Teacher teacherRes = loginService.teacherLogin(username,password);
         if (teacherRes != null) {
-            return ApiResultHandler.buildApiResult(200, "ok", teacherRes);
+            return ApiResultHandler.success(teacherRes);
         }
 
         Student studentRes = loginService.studentLogin(username,password);
         if (studentRes != null) {
-            return ApiResultHandler.buildApiResult(200, "ok", studentRes);
+            return ApiResultHandler.success(studentRes);
         }
 
-        return ApiResultHandler.buildApiResult(400, "error", null);
+        return ApiResultHandler.error();
     }
 
 

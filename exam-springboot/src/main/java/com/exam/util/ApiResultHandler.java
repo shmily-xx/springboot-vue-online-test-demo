@@ -27,6 +27,14 @@ public class ApiResultHandler {
         return apiResult;
     }
 
+    public static <T> ApiResult<T> error() {
+        ApiResult<T> apiResult = new ApiResult<T>();
+        apiResult.setData(null);
+        apiResult.setCode(-1);
+        apiResult.setMessage(null);
+        return apiResult;
+    }
+
     public static <T> ApiResult<T> error(String message, T object) {
         ApiResult<T> apiResult = new ApiResult<T>();
         apiResult.setData(object);

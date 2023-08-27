@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Teacher {
     private Integer teacherId;
+
     @NotNull
     private String teacherName;
 

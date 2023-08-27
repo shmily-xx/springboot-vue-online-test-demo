@@ -83,6 +83,8 @@ export default {
                 } else {
                     alert(res.data.message)
                 }
+            }).catch(error => {
+                console.log(error);
             })
         },
         cancel() { //取消按钮
