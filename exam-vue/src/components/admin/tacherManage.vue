@@ -16,22 +16,12 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="pagination.current"
-      :page-sizes="[6, 10]"
-      :page-size="pagination.size"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="pagination.total"
-      class="page">
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+      :current-page="pagination.current" :page-sizes="[6, 10]" :page-size="pagination.size"
+      layout="total, sizes, prev, pager, next, jumper" :total="pagination.total" class="page">
     </el-pagination>
     <!-- 编辑对话框-->
-    <el-dialog
-      title="编辑试卷信息"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose">
+    <el-dialog title="编辑试卷信息" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
       <section class="update">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="姓名">
@@ -87,7 +77,7 @@ export default {
       //分页查询所有试卷信息
       this.$axios(`/api/teachers/${this.pagination.current}/${this.pagination.size}`).then(res => {
         this.pagination = res.data.data;
-      }).catch(error => {});
+      }).catch(error => { });
     },
     //改变当前记录条数
     handleSizeChange(val) {
@@ -106,11 +96,11 @@ export default {
       })
     },
     deleteById(teacherId) { //删除当前学生
-      this.$confirm("确定删除当前教师吗？删除后无法恢复","Warning",{
+      this.$confirm("确定删除当前教师吗？删除后无法恢复", "Warning", {
         confirmButtonText: '确定删除',
         cancelButtonText: '算了,留着吧',
         type: 'danger'
-      }).then(()=> { //确认删除
+      }).then(() => { //确认删除
         this.$axios({
           url: `/api/teacher/${teacherId}`,
           method: 'delete',
@@ -131,7 +121,7 @@ export default {
         }
       }).then(res => {
         console.log(res)
-        if(res.data.code ==200) {
+        if (res.data.code == 200) {
           this.$message({
             message: '更新成功',
             type: 'success'
@@ -144,7 +134,7 @@ export default {
       this.$confirm('确认关闭？')
         .then(_ => {
           done();
-        }).catch(_ => {});
+        }).catch(_ => { });
     },
   }
 };
@@ -152,19 +142,23 @@ export default {
 <style lang="less" scoped>
 .all {
   padding: 0px 40px;
+
   .page {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .edit {
     margin-left: 20px;
   }
+
   .el-table tr {
     background-color: #dd5862 !important;
   }
 }
+
 .el-table .warning-row {
   background: #000 !important;
 }
