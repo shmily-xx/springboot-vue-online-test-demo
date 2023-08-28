@@ -12,27 +12,27 @@ import java.util.List;
  * @author weidie
  */
 @Mapper
-public interface TeacherMapper extends BaseMapper<Teacher> {
+public interface TeacherMapper{
 
 //    @Select("select * from teacher")
     IPage<Teacher>  findAll(Page<Teacher> page);
 
 //    @Select("select * from teacher")
-    public List<Teacher> findAllNoPages();
+    List<Teacher> findAllNoPages();
 
 //    @Select("select * from teacher where teacherId = #{teacherId}")
-    public Teacher findById(Integer teacherId);
+    Teacher findById(Integer teacherId);
 
 //    @Delete("delete from teacher where teacherId = #{teacherId}")
-    public int deleteById(Integer teacherId);
+    int deleteById(Integer teacherId);
 
 //    @Update("update teacher set teacherName = #{teacherName},sex = #{sex}," +
 //            "tel = #{tel}, email = #{email},pwd = #{pwd},cardId = #{cardId}," +
 //            "role = #{role},institute = #{institute},type = #{type} where teacherId = #{teacherId}")
-    public int update(Teacher teacher);
+    int updateById(Teacher teacher);
 
 //    @Options(useGeneratedKeys = true,keyProperty = "teacherId")
 //    @Insert("insert into teacher(teacherName,sex,tel,email,pwd,cardId,role,type,institute) " +
 //            "values(#{teacherName},#{sex},#{tel},#{email},#{pwd},#{cardId},#{role},#{type},#{institute})")
-    public int add(Teacher teacher);
+    int add(Teacher teacher);
 }

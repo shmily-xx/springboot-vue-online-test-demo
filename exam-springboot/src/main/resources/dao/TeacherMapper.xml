@@ -24,7 +24,7 @@
         where teacherId = #{teacherId}
     </delete>
 
-    <update id="update">
+    <update id="updateById">
         update teacher
         set teacherName = #{teacherName},
             sex         = #{sex},
