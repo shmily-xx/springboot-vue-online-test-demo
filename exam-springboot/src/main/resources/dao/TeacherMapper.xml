@@ -18,25 +18,25 @@
         where teacherId = #{teacherId}
     </select>
 
-    <delete id="deleteById">
-        delete
-        from teacher
-        where teacherId = #{teacherId}
-    </delete>
+<!--    <delete id="deleteById">-->
+<!--        delete-->
+<!--        from teacher-->
+<!--        where teacherId = #{teacherId}-->
+<!--    </delete>-->
 
-    <update id="updateById">
-        update teacher
-        set teacherName = #{teacherName},
-            sex         = #{sex},
-            tel         = #{tel},
-            email       = #{email},
-            pwd         = #{pwd},
-            cardId      = #{cardId},
-            role        = #{role},
-            institute   = #{institute},
-            type        = #{type}
-        where teacherId = #{teacherId}
-    </update>
+<!--    <update id="updateById">-->
+<!--        update teacher-->
+<!--        set teacherName = #{teacherName},-->
+<!--            sex         = #{sex},-->
+<!--            tel         = #{tel},-->
+<!--            email       = #{email},-->
+<!--            pwd         = #{pwd},-->
+<!--            cardId      = #{cardId},-->
+<!--            role        = #{role},-->
+<!--            institute   = #{institute},-->
+<!--            type        = #{type}-->
+<!--        where teacherId = #{teacherId}-->
+<!--    </update>-->
 
     <insert id="add" useGeneratedKeys="true" keyProperty="teacherId">
         insert into teacher(teacherName, sex, tel, email, pwd, cardId, role, type, institute)
