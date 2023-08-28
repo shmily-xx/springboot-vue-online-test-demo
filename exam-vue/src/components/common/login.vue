@@ -118,10 +118,7 @@ export default {
   },
   computed: mapState(["userInfo"]),
   mounted() {
-    var nowYear = new Date();
     this.fullYear = this.getFormatDate().getFullYear
-
-    // console.log(this.fullYear)
   }
 }
 </script>
