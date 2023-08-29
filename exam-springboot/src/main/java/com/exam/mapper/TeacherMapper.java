@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-/**
+/** Mapper 继承该接口后，无需编写 mapper.xml 文件，即可获得CRUD功能
  * @author weidie
  */
 @Mapper
