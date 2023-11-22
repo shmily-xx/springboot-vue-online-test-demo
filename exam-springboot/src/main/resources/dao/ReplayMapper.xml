@@ -14,13 +14,13 @@
         select messageId,replayId,replay,replayTime from replay where messageId = #{messageId}
     </select>
 
-    <delete id="delete">
-        delete from replay where replayId = #{replayId}
-    </delete>
+<!--    <delete id="delete">-->
+<!--        delete from replay where replayId = #{replayId}-->
+<!--    </delete>-->
 
-    <update id="update">
-        update replay set title = #{title}, replay = #{replay}, replayTime = #{replayTime} where replayId = #{replayId}
-    </update>
+<!--    <update id="update">-->
+<!--        update replay set title = #{title}, replay = #{replay}, replayTime = #{replayTime} where replayId = #{replayId}-->
+<!--    </update>-->
 
     <insert id="add" useGeneratedKeys="true" keyProperty="replayId">
         insert into replay(messageId,replay,replayTime) values(#{messageId}, #{replay},#{replayTime})

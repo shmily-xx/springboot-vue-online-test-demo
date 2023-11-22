@@ -1,16 +1,21 @@
 package com.exam.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@TableName("Replay")
 public class Replay {
-    private Integer messageId;
-
+    @TableId(value = "replayId", type = IdType.AUTO)
     private Integer replayId;
+
+    private Integer messageId;
 
     private String replay;
 

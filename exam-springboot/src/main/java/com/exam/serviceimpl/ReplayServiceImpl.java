@@ -21,7 +21,7 @@ public class ReplayServiceImpl implements ReplayService {
 
     @Override
     public List<Replay> findAll() {
-        return replayMapper.findAll();
+        return replayMapper.selectList(null);
     }
 
     @Override
@@ -36,16 +36,16 @@ public class ReplayServiceImpl implements ReplayService {
 
     @Override
     public int delete(Integer replayId) {
-        return replayMapper.delete(replayId);
+        return replayMapper.deleteById(replayId);
     }
 
     @Override
     public int update(Replay replay) {
-        return replayMapper.update(replay);
+        return replayMapper.update(replay, null);
     }
 
     @Override
     public int add(Replay replay) {
-        return replayMapper.add(replay);
+        return replayMapper.insert(replay);
     }
 }

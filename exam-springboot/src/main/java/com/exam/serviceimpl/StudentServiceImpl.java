@@ -21,12 +21,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public IPage<Student> findAll(Page<Student> page) {
-        return studentMapper.findAll(page);
+        return studentMapper.selectPage(page,null);
     }
 
     @Override
     public Student findById(Integer studentId) {
-        return studentMapper.findById(studentId);
+        return studentMapper.selectById(studentId);
     }
 
     @Override
@@ -36,16 +36,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int update(Student student) {
-        return studentMapper.update(student);
+        return studentMapper.updateById(student);
     }
 
     @Override
     public void updatePwd(Student student) {
-        studentMapper.updatePwd(student);
+        studentMapper.updateById(student);
     }
 
     @Override
     public int add(Student student) {
-        return studentMapper.add(student);
+        return studentMapper.insert(student);
     }
 }

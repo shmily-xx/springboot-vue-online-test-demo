@@ -26,17 +26,17 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public IPage<Teacher> findAll(Page<Teacher> page) {
-        return teacherMapper.findAll(page);
+        return teacherMapper.selectPage(page, null);
     }
 
     @Override
     public List<Teacher> findAll() {
-        return teacherMapper.findAllNoPages();
+        return teacherMapper.selectList(null);
     }
 
     @Override
     public Teacher findById(Integer teacherId) {
-        return teacherMapper.findById(teacherId);
+        return teacherMapper.selectById(teacherId);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public int add(Teacher teacher) {
-        return teacherMapper.add(teacher);
+        return teacherMapper.insert(teacher);
     }
 
 }

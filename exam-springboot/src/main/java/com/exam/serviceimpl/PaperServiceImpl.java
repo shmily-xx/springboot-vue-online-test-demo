@@ -5,7 +5,10 @@ import com.exam.mapper.PaperMapper;
 import com.exam.service.PaperService;
 import org.springframework.stereotype.Service;
 
+import java.sql.Wrapper;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author weidie
@@ -21,17 +24,19 @@ public class PaperServiceImpl implements PaperService {
 
     @Override
     public List<PaperManage> findAll() {
-        return paperMapper.findAll();
+        return paperMapper.selectList(null);
     }
 
     @Override
     public List<PaperManage> findById(Integer paperId) {
-        return paperMapper.findById(paperId);
+        Map<String, Object> columnMap = new HashMap<>();
+        columnMap.put("paperId", paperId);
+        return paperMapper.selectByMap(columnMap);
     }
 
     @Override
     public int add(PaperManage paperManage) {
-        return paperMapper.add(paperManage);
+        return paperMapper.insert(paperManage);
     }
 
 }

@@ -1,11 +1,19 @@
 package com.exam.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@TableName("score")
 public class Score {
+
+    @TableId(value = "scoreId", type = IdType.AUTO)
+    private Integer scoreId;
+
     private Integer examCode;
 
     private Integer studentId;
@@ -17,8 +25,6 @@ public class Score {
     private Integer etScore;
 
     private Integer score;
-
-    private Integer scoreId;
 
     private String answerDate;
 }
