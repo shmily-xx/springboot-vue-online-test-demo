@@ -14,4 +14,6 @@ public interface LoginService {
     Teacher teacherLogin(Integer username, String password);
 
     Student studentLogin(Integer username, String password);
+
+    Admin queryById(String id);
 }

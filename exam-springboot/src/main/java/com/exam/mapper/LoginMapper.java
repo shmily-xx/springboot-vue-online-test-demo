@@ -1,5 +1,6 @@
 package com.exam.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.exam.entity.Admin;
 import com.exam.entity.Student;
 import com.exam.entity.Teacher;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author weidie
  */
 @Mapper
-public interface LoginMapper {
+public interface LoginMapper extends BaseMapper {
 
     //    @Select("select adminId,adminName,sex,tel,email,cardId,role from admin where adminId = #{username} and pwd = #{password}")
     Admin adminLogin(Integer username, String password);

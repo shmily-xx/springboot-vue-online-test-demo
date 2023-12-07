@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @author weidie
  */
 @Service
-public class LoginServiceImpl implements LoginService {
+public class LoginServiceImpl implements LoginService{
 
     private final LoginMapper loginMapper;
 
@@ -32,5 +32,11 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Student studentLogin(Integer username, String password) {
         return loginMapper.studentLogin(username,password);
+    }
+
+    @Override
+    public Admin queryById(String id) {
+
+        return null;
     }
 }
